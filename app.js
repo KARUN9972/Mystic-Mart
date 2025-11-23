@@ -1,14 +1,11 @@
-// app.js - Beginner-friendly Mystic Mart script
-// Keeps logic simple and readable
 
-// --- State ---
 var cartCount = 0;
 var cartTotal = 0;
 var activeCoupon = null;
 var couponWarningTimeout = null;
 var phoenixStock = 3;
 
-// --- Inject small styles from JS (optional; remove styles.css if you want JS % to grow) ---
+
 (function injectSimpleStyles() {
   var css = "\
   body { font-family: Arial, sans-serif; background: #071022; color: #e6eef8; padding: 20px; }\
@@ -22,7 +19,7 @@ var phoenixStock = 3;
   document.head.appendChild(s);
 })();
 
-// --- Setup listeners when page loads ---
+-
 window.addEventListener("DOMContentLoaded", function () {
   // Attach click listeners to all add-to-cart buttons
   var buttons = document.querySelectorAll(".add-to-cart");
@@ -30,34 +27,33 @@ window.addEventListener("DOMContentLoaded", function () {
     buttons[i].addEventListener("click", handleAddToCart);
   }
 
-  // Coupon input listener
+
   var couponInput = document.getElementById("coupon-input");
   if (couponInput) {
     couponInput.addEventListener("input", handleCouponChange);
   }
 
-  // initial display update
   updateCartDisplay();
   updatePhoenixStockDisplay();
 });
 
-// --- Add to cart handler (simple) ---
+
 function handleAddToCart(event) {
   var button = event.target;
   var price = parseFloat(button.getAttribute("data-price")) || 0;
   var key = button.getAttribute("data-key");
 
-  // Phoenix item limited stock logic
+
   if (key === "phoenix") {
     if (phoenixStock <= 0) {
-      // nothing to add
+     
       return;
     }
     phoenixStock = phoenixStock - 1;
     updatePhoenixStockDisplay();
 
     if (phoenixStock <= 0) {
-      // disable phoenix buttons
+   
       var phoenixButtons = document.querySelectorAll('button[data-key="phoenix"]');
       for (var j = 0; j < phoenixButtons.length; j++) {
         phoenixButtons[j].disabled = true;
@@ -65,11 +61,10 @@ function handleAddToCart(event) {
     }
   }
 
-  // update cart values
+ 
   cartCount = cartCount + 1;
   cartTotal = cartTotal + price;
 
-  // small button text feedback
   if (!button.dataset.clicked) {
     button.textContent = "Added! Add More ✨";
     button.dataset.clicked = "true";
@@ -80,13 +75,13 @@ function handleAddToCart(event) {
   updateCartDisplay();
 }
 
-// --- Coupon handler (simple checks) ---
+
 function handleCouponChange() {
   var input = document.getElementById("coupon-input");
   if (!input) return;
   var code = input.value.trim().toUpperCase();
 
-  // clear previous
+  
   activeCoupon = null;
   clearCouponWarning();
 
@@ -110,7 +105,7 @@ function handleCouponChange() {
   updateCartDisplay();
 }
 
-// --- Update UI display of cart info ---
+
 function updateCartDisplay() {
   var countEl = document.getElementById("cart-count");
   var subtotalEl = document.getElementById("cart-subtotal");
@@ -142,7 +137,7 @@ function updateCartDisplay() {
   }
 }
 
-// --- Phoenix stock display helper ---
+
 function updatePhoenixStockDisplay() {
   var stockEl = document.getElementById("stock-phoenix");
   if (!stockEl) return;
@@ -150,7 +145,7 @@ function updatePhoenixStockDisplay() {
   else stockEl.textContent = "Sold Out: Reborn Next Moon Cycle";
 }
 
-// --- Coupon warning helpers ---
+
 function showCouponWarning(text) {
   var el = document.getElementById("coupon-warning");
   if (!el) return;
