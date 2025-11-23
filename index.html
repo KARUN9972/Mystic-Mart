@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mystic Mart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Welcome to Mystic Mart 🪄 </h1>
+      
+      <p>Feel the magic in every purchase</p>
+    </header>
+
+    <main class="main-layout">
+      
+      <section class="products">
+        
+
+       
+        <div class="item-card">
+          <h3>Phoenix Feather Potion</h3>
+          <p class="item-tagline">“Only 3 drops needed to feel reborn.”</p>
+          <p class="item-price">Price: <span>35</span> gold</p>
+          <p class="item-extra">
+            Brewed from a single immortal feather. Increases luck for 3 quests.
+          </p>
+          <p class="stock-text" id="stock-phoenix">Only 3 left!</p>
+          <button
+            class="add-to-cart"
+            data-price="35"
+            data-key="phoenix"
+          >
+            Add to Cart
+          </button>
+        </div>
+
+     
+        <div class="item-card">
+          <h3>Mana Crystal</h3>
+          <p class="item-tagline">“Recharge your inner wizard.”</p>
+          <p class="item-price">Price: <span>20</span> gold</p>
+          <p class="item-extra">
+            Restores spell energy instantly. Glows brighter with every cast.
+          </p>
+          <button
+            class="add-to-cart"
+            data-price="20"
+            data-key="mana"
+          >
+            Add to Cart
+          </button>
+        </div>
+
+       
+        <div class="item-card">
+          <h3>Cloak of Soft Invisibility</h3>
+          <p class="item-tagline">“You’re not fully invisible, just… ignored.”</p>
+          <p class="item-price">Price: <span>50</span> gold</p>
+          <p class="item-extra">
+            Great for dodging awkward conversations and surprise tests.
+          </p>
+          <button
+            class="add-to-cart"
+            data-price="50"
+            data-key="cloak"
+          >
+            Add to Cart
+          </button>
+        </div>
+
+    
+        <div class="item-card">
+          <h3>Scroll of Tiny Fireball</h3>
+          <p class="item-tagline">“Perfect for lighting candles… or snacks.”</p>
+          <p class="item-price">Price: <span>15</span> gold</p>
+          <p class="item-extra">
+            Harmless to people, deadly to boredom. One-time use scroll.
+          </p>
+          <button
+            class="add-to-cart"
+            data-price="15"
+            data-key="fireball"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </section>
+
+
+      <aside class="cart">
+        <h2>Your Spell Satchel</h2>
+
+        <p class="cart-line">
+          Items in cart: <span id="cart-count">0</span>
+        </p>
+        <p class="cart-line">
+          Subtotal: <span id="cart-subtotal">0.00</span> gold
+        </p>
+        <p class="cart-line">
+          Discount: -<span id="cart-discount">0.00</span> gold
+        </p>
+        <p class="cart-total">
+          Total: <span id="cart-total">0.00</span> gold
+        </p>
+        <p id="cart-message" class="cart-message">
+          Your satchel is empty. Add some magic!
+        </p>
+
+        <div class="coupon-area">
+          <h3>Magic Coupon</h3>
+          <p class="coupon-hint">
+            Hint: try <span class="hint-span">FIRE10</span> or
+            <span class="hint-span">ICE25</span>
+          </p>
+          <input
+            id="coupon-input"
+            type="text"
+            placeholder="Enter magic code..."
+          />
+          <p id="active-coupon-message" class="coupon-active">
+            No magic coupon active.
+          </p>
+          <p id="coupon-warning" class="coupon-warning"></p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>© Mystic Mart ·2025</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
